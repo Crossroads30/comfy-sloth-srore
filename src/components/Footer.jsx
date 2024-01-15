@@ -7,7 +7,7 @@ const Footer = () => {
 		<Wrapper>
 			<h5>
 				&copy; {currentYear}
-				<span>ComfySloth</span>
+				<span> ComfySloth</span>
 			</h5>
 			<h5>All rights reserved</h5>
 		</Wrapper>
