@@ -48,24 +48,27 @@ export const ProductsProvider = ({ children }) => {
 		}
 	}
 
+	
 	const fetchSingleProduct = async url => {
 		dispatch({ type: GET_SINGLE_PRODUCT_BEGIN })
 		try {
 			const response = await axios.get(url)
-			const single_product = response.data
-			dispatch({ type: GET_SINGLE_PRODUCT_SUCCESS, payload: single_product })
+			const singleProduct = response.data
+			dispatch({ type: GET_SINGLE_PRODUCT_SUCCESS, payload: singleProduct })
+			// console.log(single_product)
 		} catch (error) {
 			dispatch({ type: GET_SINGLE_PRODUCT_ERROR })
 		}
 	}
-
+	
 	useEffect(() => {
 		fetchProducts(url)
 	}, [])
 
-
 	return (
-		<ProductsContext.Provider value={{ ...state, openSidebar, closeSidebar }}>
+		<ProductsContext.Provider
+			value={{ ...state, openSidebar, closeSidebar, fetchSingleProduct }}
+		>
 			{children}
 		</ProductsContext.Provider>
 	)
