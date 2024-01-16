@@ -15,6 +15,10 @@ import {
 
 const initialState = {
 	isSidebarOpen: false,
+	products_loading: false,
+	products_error: false,
+	products: [],
+	featured_products: [],
 }
 
 const ProductsContext = React.createContext()
@@ -29,7 +33,7 @@ export const ProductsProvider = ({ children }) => {
 		dispatch({ type: SIDEBAR_CLOSE })
 	}
 
-	const fetchProducts = async(url) => {
+	const fetchProducts = async url => {
 		const response = await axios.get(url)
 		console.log(response)
 	}
