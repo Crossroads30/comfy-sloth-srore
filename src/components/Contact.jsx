@@ -12,7 +12,7 @@ const Contact = () => {
 						ullam. Repellat tempore maiores maxime fugit iusto quia assumenda
 						nihil aliquam!
 					</p>
-					<form lassName='contact-form'>
+					<form className='contact-form'>
 						<input
 							type='email'
 							className='form-input'
