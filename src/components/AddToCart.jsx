@@ -12,10 +12,29 @@ const AddToCart = ({ product }) => {
 	const [amount, setAmount] = useState(1)
 
 	const increaseAmount = () => {
-		setAmount(prev => prev + 1)
+		setAmount(prevAmount => {
+			let tempAmount = prevAmount + 1
+			if (tempAmount > stock) {
+				tempAmount = stock
+			}
+			return tempAmount // we should return a value of amount to cart component!!!
+		})
+		// if (amount < stock) {
+		// 	setAmount(prevAmount => prevAmount + 1)
+		// } // that is wrong, course we should return a value of amount to cart component, not just increase & decrease!!! 
 	}
+
 	const decreaseAmount = () => {
-		setAmount(prev => prev - 1)
+		setAmount(prevAmount => {
+			let tempAmount = prevAmount - 1
+			if (tempAmount < 1) {
+				tempAmount = 1
+			}
+			return tempAmount // we should return a value of amount to cart component!!!
+		})
+		// if (amount > 1) {
+		// 	setAmount(prevAmount => prevAmount - 1)
+		// } // that is wrong, course we should return a value of amount to cart component, not just increase & decrease!!!  
 	}
 
 	return (
