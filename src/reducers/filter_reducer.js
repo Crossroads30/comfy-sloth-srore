@@ -17,8 +17,8 @@ const filter_reducer = (state, action) => {
 		return {
 			...state,
 			// we must use here spread op., course we use the same payload in two different values, otherwise, we wont be able to go back from 'filtered_prod' to 'all_prod', it is the way the JS works with memory with the point in the same place in the memory!!!
-			all_products: [...action.payload],
-			filtered_products: [...action.payload],
+			all_products: [...action.payload], // in this array always be all product
+			filtered_products: [...action.payload], // this array always be changed
 			filters: {
 				...state.filters,
 				max_price: maxPrice,
@@ -91,8 +91,19 @@ const filter_reducer = (state, action) => {
 		}
 	}
 	if (action.type === FILTER_PRODUCTS) {
+		const { all_products } = state
+		const { text, category, company, color, price, shipping } = state.filters
+		let tempProducts = [...all_products] // before we be filtering smth, we must always start with fresh copy of all products, we always need to have access to default data!!!
+
+		//filtering:
+		if (text) {
+			tempProducts = tempProducts.filter(product => {
+				return product.name.toLowerCase().startsWith(text)
+			})
+		}
 		return {
 			...state,
+			filtered_products: tempProducts,
 		}
 	}
 	if (action.type === CLEAR_FILTERS) {
