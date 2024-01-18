@@ -27,7 +27,7 @@ const Filters = () => {
 
 	return (
 		<Wrapper>
-			<div className='conte'>
+			<div className='content'>
 				<form onSubmit={e => e.preventDefault()}>
 					{/* search input */}
 					<div className='form-control'>
@@ -137,6 +137,18 @@ const Filters = () => {
 						/>
 					</div>
 					{/* end of price */}
+					{/* shipping */}
+					<div className='form-control shipping'>
+						<label htmlFor='shipping'>free shipping</label>
+						<input
+							type='checkbox'
+							name='shipping'
+							id='shipping'
+							onChange={updateFilters}
+              checked={shipping}
+						/>
+					</div>
+					{/* end of shipping */}
 				</form>
 			</div>
 		</Wrapper>
@@ -225,9 +237,9 @@ const Wrapper = styled.section`
 		grid-template-columns: auto 1fr;
 		align-items: center;
 		text-transform: capitalize;
-		column-gap: 0.5rem;
+		column-gap: 0.rem;
 		font-size: 1rem;
-		max-width: 200px;
+		max-width: 130px;
 	}
 	.clear-btn {
 		background: var(--clr-red-dark);
