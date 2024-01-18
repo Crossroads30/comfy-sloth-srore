@@ -42,7 +42,7 @@ const Filters = () => {
 					</div>
 					{/* end search input */}
 					{/* categories */}
-					<div className='form-cont'>
+					<div className='form-control'>
 						<h5>catigory</h5>
 						<div>
 							{categories.map((cat, index) => {
@@ -63,6 +63,25 @@ const Filters = () => {
 						</div>
 					</div>
 					{/* end of categories */}
+					{/* companies */}
+					<div className='form-control'>
+						<h5>company</h5>
+						<select
+							name='company'
+							className='company'
+							value={company}
+							onChange={updateFilters}
+						>
+							{companies.map((com, index) => {
+								return (
+									<option key={index} value={com}>
+										{com}
+									</option>
+								)
+							})}
+						</select>
+					</div>
+					{/* end of companies */}
 				</form>
 			</div>
 		</Wrapper>
