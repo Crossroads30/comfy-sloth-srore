@@ -65,6 +65,9 @@ export const FilterProvider = ({ children }) => {
 		if (name === 'category') {
 			value = e.target.textContent // we get the value from the button's text
 		}
+		if (name === 'color') {
+			value = e.target.dataset.color // we get the value from the data-atr(data-color) of the colors buttons
+		}
 		dispatch({ type: UPDATE_FILTERS, payload: { value, name } })
 	}
 
