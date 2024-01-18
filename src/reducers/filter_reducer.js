@@ -81,20 +81,34 @@ const filter_reducer = (state, action) => {
 		}
 	}
 	if (action.type === UPDATE_FILTERS) {
-		const {name,value} = action.payload
+		const { name, value } = action.payload
 		return {
 			...state,
 			filters: {
 				...state.filters,
-				[name]: value, // dynamic key access by input names 
+				[name]: value, // dynamic key access by input names
 			},
 		}
 	}
-		if (action.type === FILTER_PRODUCTS) {
-			return {
-				...state,
-			}
+	if (action.type === FILTER_PRODUCTS) {
+		return {
+			...state,
 		}
+	}
+	if (action.type === CLEAR_FILTERS) {
+		return {
+			...state,
+			filters: {
+				...state.filters,
+				text: '',
+				company: 'all',
+				category: 'all',
+				color: 'all',
+				price: state.filters.max_price,
+				shipping: false,
+			},
+		}
+	}
 
 	throw new Error(`No Matching "${action.type}" - action type`)
 }
