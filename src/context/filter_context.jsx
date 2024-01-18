@@ -77,7 +77,9 @@ export const FilterProvider = ({ children }) => {
 		dispatch({ type: UPDATE_FILTERS, payload: { value, name } })
 	}
 
-	const clearFilters = () => {}
+	const clearFilters = () => {
+		dispatch({ type: CLEAR_FILTERS })
+	}
 
 	return (
 		<FilterContext.Provider
