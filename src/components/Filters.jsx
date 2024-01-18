@@ -123,6 +123,20 @@ const Filters = () => {
 						</div>
 					</div>
 					{/* end of colors */}
+					{/* price */}
+					<div className='form-control'>
+						<h5>price</h5>
+						<p className='price'>{formatPrice(price)}</p>
+						<input
+							type='range'
+							name='price'
+							onChange={updateFilters}
+							min={min_price}
+							max={max_price}
+							value={price} // value from this input by default is STRING!!!
+						/>
+					</div>
+					{/* end of price */}
 				</form>
 			</div>
 		</Wrapper>
@@ -181,7 +195,7 @@ const Wrapper = styled.section`
 		margin-right: 0.5rem;
 		border: none;
 		cursor: pointer;
-		opacity: 0.5;
+		opacity: 0.3;
 		display: flex;
 		align-items: center;
 		justify-content: center;
