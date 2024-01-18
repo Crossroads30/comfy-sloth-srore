@@ -68,6 +68,9 @@ export const FilterProvider = ({ children }) => {
 		if (name === 'color') {
 			value = e.target.dataset.color // we get the value from the data-atr(data-color) of the colors buttons
 		}
+		if(name === 'price') {
+			value = Number(value) // we fix string that comes from range input to number
+		}
 		dispatch({ type: UPDATE_FILTERS, payload: { value, name } })
 	}
 
