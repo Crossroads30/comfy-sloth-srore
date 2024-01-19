@@ -9,34 +9,34 @@ import {
 const cart_reducer = (state, action) => {
 	if (action.type === ADD_TO_CART) {
 		const { id, color, amount, product } = action.payload
-    // here we check if the item exist in the cart: 
+		// here we check if the item exist in the cart:
 		const tempItem = state.cart.find(item => item.id === id + color)
 
-    //!!! we must combine id + color in order to add the same item with just different color!!! 
+		//!!! we must combine id + color in order to add the same item with just different color!!!
 
-    // here if statment for if the item already exist in the cart:
+		// here if statment for if the item already exist in the cart:
 		if (tempItem) {
 			const tempCart = state.cart.map(cartItem => {
-        // if it exist we must update only amount of this item!
+				// if it exist we must update only amount of this item!
 				if (cartItem.id === id + color) {
 					let newAmount = cartItem.amount + amount
-          // this if for if the amount is bigger than sock of items
+					// this if for if the amount is bigger than sock of items
 					if (newAmount > cartItem.max) {
-            // if it's bigger, we assigment the stock value to the amount 
+						// if it's bigger, we assigment the stock value to the amount
 						newAmount = cartItem.max
 					}
-          // and return all prev props of the item with only changed amount of the adding item
+					// and return all prev props of the item with only changed amount of the adding item
 					return { ...cartItem, amount: newAmount }
 				} else {
-          // if it's not bigger we just return item itself with chosen amount
+					// if it's not bigger we just return item itself with chosen amount
 					return cartItem
 				}
 			})
-      // we return state & cart with our changed amount of the item 
+			// we return state & cart with our changed amount of the item
 			return { ...state, cart: tempCart }
 		} else {
-      // this statment for if item is not exist at the cart
-      // we create a new one with all props
+			// this statment for if item is not exist at the cart
+			// we create a new one with all props
 			const newItem = {
 				id: id + color,
 				name: product.name,
@@ -46,11 +46,23 @@ const cart_reducer = (state, action) => {
 				price: product.price,
 				max: product.stock,
 			}
-      // we return new created item:
+			// we return new created item:
 			return { ...state, cart: [...state.cart, newItem] }
 		}
 	}
-
+	if (action.type === REMOVE_CART_ITEM) {
+		const tempCart = state.cart.filter(item => item.id !== action.payload)
+		return {
+			...state,
+			cart: tempCart,
+		}
+	}
+	if (action.type === CLEAR_CART) {
+		return {
+			...state,
+			cart: [],
+		}
+	}
 	throw new Error(`No Matching "${action.type}" - action type`)
 }
 
