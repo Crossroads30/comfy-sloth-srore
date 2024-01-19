@@ -12,6 +12,8 @@ const cart_reducer = (state, action) => {
     // here we check if the item exist in the cart: 
 		const tempItem = state.cart.find(item => item.id === id + color)
 
+    //!!! we must combine id + color in order to add the same item with just different color!!! 
+
     // here if statment for if the item already exist in the cart:
 		if (tempItem) {
 			const tempCart = state.cart.map(cartItem => {
@@ -23,7 +25,7 @@ const cart_reducer = (state, action) => {
             // if it's bigger, we assigment the stock value to the amount 
 						newAmount = cartItem.max
 					}
-          // and return it as amount of the adding item
+          // and return all prev props of the item with only changed amount of the adding item
 					return { ...cartItem, amount: newAmount }
 				} else {
           // if it's not bigger we just return item itself with chosen amount
