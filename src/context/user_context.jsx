@@ -9,13 +9,32 @@ export const UserProvider = ({ children }) => {
 	const [authenticated, setAuthenticated] = useState(false)
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
+	const [loginEmail, setLoginEmail] = useState('')
+	const [loginPassword, setLoginPassword] = useState('')
+	const [alert, setAlert] = useState({
+		show: false,
+		msg: '',
+	})
+
+	useEffect(() => {
+		if (loginEmail === 'comfyTest@email.com' && loginPassword === '12345') {
+			setAuthenticated(true)
+		}
+		setAlert(true)
+		showAlert(true, 'Wrong email or password!')
+	}, [loginEmail, loginPassword])
 
 	const handelSubmit = e => {
 		e.preventDefault()
 		console.log('submit')
-		if (email === 'test@mail.com' && password === '12345') {
-			setAuthenticated(true)
-		}
+		setLoginEmail(email)
+		setLoginPassword(password)
+		setEmail('')
+		setPassword('')
+	}
+
+	const showAlert = (show = false, msg = '') => {
+		setAlert({show,msg})
 	}
 
 	// for Auth0
@@ -52,6 +71,9 @@ export const UserProvider = ({ children }) => {
 				setEmail,
 				setPassword,
 				handelSubmit,
+				setAlert,
+				alert,
+				showAlert,
 			}}
 		>
 			{children}
