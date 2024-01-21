@@ -12,6 +12,7 @@ import {
 	PrivateRoute,
 	AuthWrapper,
 } from './pages'
+import LoginPage from './pages/LoginPage'
 
 // for using 'Auth0'(it does't work in Belarus) we must wrapped all app in  <AuthWrapper>{'Router, and all what inside of it'}<AuthWrapper/>
 
@@ -30,6 +31,7 @@ function App() {
 					<Route path='/checkout' element={<Checkout />} />
 				</Route>
 				<Route path='*' element={<Error />} />
+				<Route path='/login' element={<LoginPage />} />
 			</Routes>
 			<Footer />
 		</Router>
