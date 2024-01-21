@@ -8,7 +8,7 @@ const Alert = () => {
 			showAlert()
 		}, 3000)
 		return () => clearTimeout(timeout)
-	}, [alert])
+	}, [])
 	return <p className='alert'>{alert.msg}</p>
 }
 
