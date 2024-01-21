@@ -1,13 +1,28 @@
 import styled from 'styled-components'
+import { useUserContext } from '../context/user_context'
 
 const LoginPage = () => {
+	const { email, password, setEmail, setPassword, handelSubmit } =
+		useUserContext()
 	return (
 		<Wrapper className='page-100 section'>
 			<div className='login'>
 				<h3>Please login</h3>
-				<form className='form-control'>
-					<input type='email' name='' placeholder=' Email' />
-					<input type='password' name='' placeholder=' Password' />
+				<form onSubmit={handelSubmit} className='form-control'>
+					<input
+						value={email}
+						type='email'
+						name='email'
+						placeholder=' Email'
+						onChange={e => setEmail(e.target.value)}
+					/>
+					<input
+						value={password}
+						type='password'
+						name='password'
+						placeholder=' Password'
+						onChange={e => setPassword(e.target.value)}
+					/>
 					<button className='btn' type='submit'>
 						login
 					</button>
@@ -43,7 +58,7 @@ const Wrapper = styled.main`
 			border-radius: var(--radius);
 			border-color: transparent;
 			letter-spacing: var(--spacing);
-      margin-bottom: 1.5rem;
+			margin-bottom: 1.5rem;
 		}
 	}
 `
