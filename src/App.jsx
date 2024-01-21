@@ -10,7 +10,10 @@ import {
 	Products,
 	SingleProduct,
 	PrivateRoute,
+	AuthWrapper,
 } from './pages'
+
+// for using 'Auth0'(it does't work in Belarus) we must wrapped all app in  <AuthWrapper>{'Router, and all what inside of it'}<AuthWrapper/>
 
 function App() {
 	return (
