@@ -1,4 +1,5 @@
-// /functions/hello-world.js
+// domain/.netlify/functions/hello
+
 exports.handler = async function () {
   return {
     statusCode: 200,
