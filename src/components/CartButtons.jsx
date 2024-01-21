@@ -27,7 +27,7 @@ const CartButtons = () => {
 					<span className='cart-value'>{total_items}</span>
 				</span>
 			</Link>
-			{myUser ? (
+			{authenticated ? (
 				<button
 					type='button'
 					className='auth-btn'
