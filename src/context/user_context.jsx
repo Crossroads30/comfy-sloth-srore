@@ -7,7 +7,7 @@ export const UserProvider = ({ children }) => {
 		useAuth0()
 
 	const [myUser, setMyUser] = useState(null)
-	const [authenticated, setAuthenticated] = useState(false)
+	const [authenticated, setAuthenticated] = useState(true)
 
 	// for Auth0
 	// useEffect(() => {
