@@ -7,7 +7,7 @@ import { ProductsProvider } from './context/products_context'
 import { FilterProvider } from './context/filter_context'
 import { CartProvider } from './context/cart_context'
 import { UserProvider } from './context/user_context'
-import AuthProvider from 'react-auth-kit/AuthProvider'
+// import AuthProvider from 'react-auth-kit/AuthProvider'
 import { Auth0Provider } from '@auth0/auth0-react'
 // import createStore from 'react-auth-kit/createStore'
 
