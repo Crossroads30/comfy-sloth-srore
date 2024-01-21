@@ -10,8 +10,6 @@ const LoginPage = () => {
 		setEmail,
 		setPassword,
 		handelSubmit,
-		loginEmail,
-		loginPassword,
 		authenticated,
 		alert,
 		showAlert,
