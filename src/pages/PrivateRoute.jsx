@@ -6,7 +6,7 @@ import { useUserContext } from '../context/user_context';
 
 const PrivateRoute = () => {
   const { authenticated } = useUserContext()
-  return authenticated ? <Outlet /> : <Navigate to='/' />
+  return authenticated ? <Outlet /> : <Navigate to='/login' />
 };
 
 // for Auth0 lib:
