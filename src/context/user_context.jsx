@@ -1,12 +1,21 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { useAuth0 } from '@auth0/auth0-react'
+// import { useAuth0 } from '@auth0/auth0-react'
+
+const getAuth = () => {
+	let auth = localStorage.getItem('auth')
+	if (auth) {
+		return JSON.parse(localStorage.getItem('auth'))
+	} else {
+		return (auth = false)
+	}
+}
 
 const UserContext = React.createContext()
 export const UserProvider = ({ children }) => {
 	// const { loginWithRedirect, logout, user } = useAuth0()
 
 	// const [myUser, setMyUser] = useState(null)
-	const [authenticated, setAuthenticated] = useState(false)
+	const [authenticated, setAuthenticated] = useState(getAuth())
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 	const [loginEmail, setLoginEmail] = useState('')
@@ -16,6 +25,13 @@ export const UserProvider = ({ children }) => {
 		show: false,
 		msg: '',
 	})
+	const [isChecked, setIsChecked] = useState(false)
+
+	useEffect(() => {
+		if (isChecked) {
+			localStorage.setItem('auth', JSON.stringify(authenticated))
+		}
+	}, [authenticated])
 
 	useEffect(() => {
 		if (
@@ -65,9 +81,6 @@ export const UserProvider = ({ children }) => {
 	// 		setMyUser(user)
 	// }, [user])
 
-	const loginUser = () => {
-		setAuthenticated(true)
-	}
 	const logoutUser = () => {
 		setAuthenticated(false)
 	}
@@ -86,16 +99,16 @@ export const UserProvider = ({ children }) => {
 				// loginWithRedirect,
 				// logout,
 				// myUser,
-				loginUser,
-				logoutUser,
 				authenticated,
 				email,
 				password,
+				alert,
+				isChecked,
+				setIsChecked,
+				logoutUser,
 				setEmail,
 				setPassword,
 				handelSubmit,
-				setAlert,
-				alert,
 				showAlert,
 			}}
 		>
