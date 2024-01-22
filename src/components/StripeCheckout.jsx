@@ -15,9 +15,9 @@ import { useNavigate } from 'react-router-dom'
 
 // const promise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY)
 
-const stripePromise = loadStripe(
-	'pk_test_51Oaz6oI0ut9kAUXffrX9zXyTorr1bIsczXlRw87AwxduxVERAUlV99gtHygP34q2GJKVFzki8PS33c59ab1elhD200thSWULl2'
-)
+// const stripePromise = loadStripe(
+// 	'pk_test_51Oaz6oI0ut9kAUXffrX9zXyTorr1bIsczXlRw87AwxduxVERAUlV99gtHygP34q2GJKVFzki8PS33c59ab1elhD200thSWULl2'
+// )
 
 const CheckoutForm = () => {
 	const { cart, total_amount, shipping_fee, clearCart } = useCartContext()
