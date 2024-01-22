@@ -10,11 +10,10 @@ const CartButtons = () => {
 	const { closeSidebar } = useProductsContext()
 	const { total_items, clearCart } = useCartContext()
 	const {
-		loginWithRedirect,
-		logout,
-		myUser,
+		// loginWithRedirect,
+		// logout,
+		// myUser,
 		logoutUser,
-		loginUser,
 		authenticated,
 	} = useUserContext()
 
@@ -48,6 +47,7 @@ const CartButtons = () => {
 		</Wrapper>
 	)
 }
+
 
 const Wrapper = styled.div`
 	display: grid;
