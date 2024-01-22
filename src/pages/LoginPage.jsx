@@ -13,8 +13,9 @@ const LoginPage = () => {
 		authenticated,
 		alert,
 		showAlert,
+		isChecked,
+		setIsChecked,
 	} = useUserContext()
-
 
 	if (authenticated) {
 		return <Navigate to='/' />
@@ -39,6 +40,15 @@ const LoginPage = () => {
 						placeholder=' Password'
 						onChange={e => setPassword(e.target.value)}
 					/>
+					<div className='checkbox'>
+						<input
+							type='checkbox'
+							name='check'
+							value={isChecked}
+							onChange={setIsChecked}
+						/>
+						<p>remember me</p>
+					</div>
 					<button className='btn' type='submit'>
 						login
 					</button>
@@ -91,6 +101,18 @@ const Wrapper = styled.main`
 	}
 	.alert {
 		color: red;
+	}
+	.checkbox {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		width: 120px;
+		align-self: center;
+		margin-bottom: 1.5rem;
+		p,
+		input {
+			margin: 0;
+		}
 	}
 `
 
